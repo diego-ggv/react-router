@@ -19,13 +19,19 @@ function HostLayout() {
 					Dashboard
 				</NavLink>
 				<NavLink
-					to="/host/income"
+					to="income"
 					style={ ({ isActive }) => isActive ? activeStyles : null }
 				>
 					Income
 				</NavLink>
 				<NavLink
-					to="/host/reviews"
+					to="hostVans"
+					style={ ({ isActive }) => isActive ? activeStyles : null }
+				>
+					Vans
+				</NavLink>		
+				<NavLink
+					to="reviews"
 					style={ ({ isActive }) => isActive ? activeStyles : null }
 				>
 					Reviews

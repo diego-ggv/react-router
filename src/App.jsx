@@ -14,6 +14,8 @@ import Vans from "./pages/Vans/Vans.jsx"
 import VanDetails from "./pages/Vans/VanDetails.jsx"
 import Dashboard from "./pages/Host/Dashboard.jsx"
 import Income from "./pages/Host/Income.jsx"
+import HostVans from "./pages/Host/HostVans.jsx"
+import HostVanDetails from "./pages/Host/HostVanDetails.jsx"
 import Reviews from "./pages/Host/Reviews.jsx"
 
 // IMPORT COMPONENTS
@@ -31,12 +33,28 @@ import "./data/server.js"
 import "./css/App.css"
 
 function App() {
-	// BUG the nested routes are not properly working. When reloading the page on a 2+ nested route, the page does not load and I get a MIME TYPE error. I think is a problem with vite server. I will try to fix it later.
+	// TODO: change the subgect form vans to MTBs and persolize styles.
+
+	//BUG: multiple nested pages doesnot work when deployed in netlify. When reloading the page on a nested route, the page does not load and I get a MIME TYPE error. I think is a problem with vite. //NOTE: adding <base href="/" /> to the index.html head fixed the problem only while runing dev but not when deploying.
+
+	/**
+	 * Challenge: add the /host/vans and /host/vans/:id routes, as well
+	 * as the "Vans" link in the Host navbar.
+	 *
+	 * For now, just create the stubbed-out version of the pages (i.e.
+	 * components that just render an <h1>). Don't worry about adding
+	 * navigation from /host/vans to /host/vans/:id yet - the link to
+	 * /host/vans is enough for now.
+	 *
+	 * When deciding whether or not to use nested routes, keep in mind
+	 * what will/won't be shared between these two pages. See the Figma
+	 * design file (or the screenshots) to help guide your choice.
+	 */
 
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/"element={<Layout />}>
+				<Route path="/" element={<Layout />}>
 					<Route index element={<Home />} />
 					<Route path="vans" element={<Vans />} />
 					<Route path="vans/:id" element={<VanDetails />} />
@@ -44,6 +62,9 @@ function App() {
 					<Route path="host" element={<HostLayout />}>
 						<Route index element={<Dashboard />} />
 						<Route path="income" element={<Income />} />
+						<Route path="hostVans" element={<HostVans />}>
+							<Route path=":id" element={<HostVanDetails />} />
+						</Route>
 						<Route path="reviews" element={<Reviews />} />
 					</Route>
 				</Route>
