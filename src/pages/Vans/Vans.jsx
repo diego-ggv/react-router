@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+// import data from "../../data/data.json"
 
 function Vans() {
 	// REACT HOOKS
@@ -11,7 +12,7 @@ function Vans() {
 			.then(res => res.json()) // res.json() returns a promise
 			.then(data => setVans(data.vans)) // data.vans is an array of objects
 			.catch(err => {
-				console.log(err)
+				console.log(err) // if there is an error, it will be logged in the console
 			})
 	}, [])
 
@@ -32,6 +33,24 @@ function Vans() {
 			</Link>
 		</div>
 	))
+
+	/*
+	const vansData = data.vans
+	const vanList = vansData.map(van => (
+		<div key={van.id} className="van">
+			<Link to={`/vans/${van.id}`}>
+				<img src={van.imageUrl} alt={van.name} />
+				<div className="van__info">
+					<h2>{van.name}</h2>
+					<p>
+						${van.price} <span>/day</span>
+					</p>
+				</div>
+				<i className={`van__type ${van.type} selected`}>{van.type}</i>
+			</Link>
+		</div>
+	))
+	*/
 
 // RENDER
 // ==============================

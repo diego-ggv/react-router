@@ -4,14 +4,10 @@
 
 // IMPORT REACT
 // ==============================
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
 // IMPORT PAGES
 // ==============================
-import Layout from "./components/Layout.jsx"
 import Home from "./pages/Home.jsx"
 import About from "./pages/About.jsx"
 import Vans from "./pages/Vans/Vans.jsx"
@@ -19,29 +15,38 @@ import VanDetails from "./pages/Vans/VanDetails.jsx"
 import Dashboard from "./pages/Host/Dashboard.jsx"
 import Income from "./pages/Host/Income.jsx"
 import Reviews from "./pages/Host/Reviews.jsx"
+
 // IMPORT COMPONENTS
 // ==============================
-// IMPORT STYLES
+import Layout from "./components/Layout.jsx"
+import HostLayout from "./components/HostLayout.jsx"
+
+// IMPORT SERVER
 // ==============================
 import "./data/server.js"
-import './css/App.css'
+// import "./data/data.json"
 
+// IMPORT STYLES
+// ==============================
+import "./css/App.css"
 
 function App() {
-  return (
+	// BUG: the nested routes are not properly working. When reloading the page on a nested route, the page does not load and I get a MIME TYPE error. I think is a problem with vite. I will try to fix it later.
+
+	return (
 		<BrowserRouter>
 			<Routes>
-				<Route element={<Layout />}>
-					<Route path="/" element={<Home />} />
-					<Route path="/vans" element={<Vans />} />
-					<Route path="/vans/:id" element={<VanDetails />} />
-					<Route path="/about" element={<About />} />
-					
-          <Route path="/host" element={ <Dashboard /> }>
-					  <Route path="/host/Income" element={<Income />} />
-					  <Route path="/host/Reviews" element={<Reviews />} />
-          </Route> 
+				<Route path="/"element={<Layout />}>
+					<Route index element={<Home />} />
+					<Route path="vans" element={<Vans />} />
+					<Route path="vans/:id" element={<VanDetails />} />
+					<Route path="about" element={<About />} />
 
+					<Route path="host" element={<HostLayout />}>
+						<Route index element={<Dashboard />} />
+						<Route path="income" element={<Income />} />
+						<Route path="reviews" element={<Reviews />} />
+					</Route>
 				</Route>
 			</Routes>
 		</BrowserRouter>
@@ -49,4 +54,3 @@ function App() {
 }
 
 export default App
-

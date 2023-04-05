@@ -34,10 +34,6 @@ header {
   background: var(--text-light-colot);
 }
 
-nav {
-  margin-left: auto;
-}
-
 a {
   text-decoration: none;
   color: var(--text-dark-color);
@@ -60,6 +56,9 @@ footer {
   font-size: .8rem;
 }
 
+.navbar {
+  margin-left: auto;
+}
 
 .navbar a {
   margin: 10px;
@@ -75,7 +74,7 @@ footer {
   align-items: center;
 }
 
-/*  HOME PAGES */
+/*  HOME PAGE */
 /*  ========= */
 .home h1 {
   margin-top: 50px;
@@ -112,7 +111,6 @@ footer {
   color: #fff;
   border: none;
   border-radius: 5px;
-  /* width: 100%; */
   max-width: 300px;
   padding: 10px 25px;
   margin: 70px auto auto;
@@ -132,7 +130,7 @@ footer {
 }
 
 /*  ABOUT PAGES */
-/*  ========= */
+/*  =========== */
 
 .about h1, 
 .about p,
@@ -168,8 +166,8 @@ footer {
 }
 
 
-/*  VAN PAGES */
-/*  ========= */
+/*  VAN PAGE */
+/*  ======== */
 
 .van__container {
  padding-inline: 25px;
@@ -333,4 +331,22 @@ i[class*='van__type'] {
   background-color: rgba(255, 139, 56, 0.8);
 }
 
+/*  HostLayout page */
+/*  =============== */
+.host-nav {
+  display: flex;
+  margin: 10px;
+}
 
+.host-nav a {
+  text-decoration: none;
+  color: #4D4D4D;
+  font-weight: 500;
+  padding: 5px 20px;
+}
+
+.host-nav a:hover {
+  color: #161616;
+  text-decoration: underline;
+  font-weight: 600;
+}
