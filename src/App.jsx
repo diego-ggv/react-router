@@ -31,7 +31,7 @@ import "./data/server.js"
 import "./css/App.css"
 
 function App() {
-	// BUG: the nested routes are not properly working. When reloading the page on a nested route, the page does not load and I get a MIME TYPE error. I think is a problem with vite. I will try to fix it later.
+	// BUG the nested routes are not properly working. When reloading the page on a 2+ nested route, the page does not load and I get a MIME TYPE error. I think is a problem with vite server. I will try to fix it later.
 
 	return (
 		<BrowserRouter>
@@ -41,7 +41,6 @@ function App() {
 					<Route path="vans" element={<Vans />} />
 					<Route path="vans/:id" element={<VanDetails />} />
 					<Route path="about" element={<About />} />
-
 					<Route path="host" element={<HostLayout />}>
 						<Route index element={<Dashboard />} />
 						<Route path="income" element={<Income />} />

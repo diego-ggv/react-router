@@ -64,6 +64,12 @@ footer {
   margin: 10px;
 }
 
+.navbar__link {
+  color: var(--primary-color);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 .home,
 .about {
   display: flex;
@@ -159,6 +165,13 @@ footer {
   border-radius: 5px;
   padding: 7px 10px;
   margin-bottom: 10px;
+}
+
+.link__button:hover {
+  outline: 2px solid var(--text-dark-color);
+  background: var(--primary-color);
+  color: var(--text-dark-color);
+  text-decoration: none;
 }
 
 .about__container {
@@ -343,10 +356,4 @@ i[class*='van__type'] {
   color: #4D4D4D;
   font-weight: 500;
   padding: 5px 20px;
-}
-
-.host-nav a:hover {
-  color: #161616;
-  text-decoration: underline;
-  font-weight: 600;
 }
