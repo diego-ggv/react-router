@@ -1,8 +1,9 @@
 :root {
   --primary-color: #FF8C38;
-  --text-light-colot:#f5f5f5;
   --secondary-color: #FFCC8D;
+  --text-light-color:#f5f5f5;
   --text-dark-color: #252525;
+  --background-light-color: #ffeeda86;
 }
 
 * {
@@ -12,6 +13,7 @@
 
 body {
   margin: 0;
+  background-color: var(--background-light-color);
 }
 
 #root {
@@ -20,18 +22,15 @@ body {
   min-height: 100vh;
 }
 
-p,
-h1,
-h3 {
-  max-width: 600px;
-  padding: 0 10px;
-}
-
 header {
   display: flex;
   padding: 25px;
   align-items: center;
-  background: var(--text-light-colot);
+  background: var(--text-dark-color);
+}
+
+header a {
+  color: var(--text-light-color);
 }
 
 a {
@@ -41,7 +40,6 @@ a {
 
 a:hover {
   color: var(--primary-color);
-  text-decoration: underline;
 }
 
 footer {
@@ -82,6 +80,10 @@ footer {
 
 /*  HOME PAGE */
 /*  ========= */
+.home_text {
+  max-width: 600px;
+  padding: 0 10px;  
+}
 .home h1 {
   margin-top: 50px;
   margin-bottom: 0;
@@ -102,7 +104,7 @@ footer {
 
 .home h1,
 .home p {
-  color: var(--text-light-colot);
+  color: var(--text-light-color);
 }
 
 .link__home{
@@ -160,7 +162,7 @@ footer {
 .link__button {
   display: inline-block;
   background: var(--text-dark-color);
-  color: var(--text-light-colot);
+  color: var(--text-light-color);
   border: none;
   border-radius: 5px;
   padding: 7px 10px;
@@ -176,6 +178,7 @@ footer {
 
 .about__container {
   padding: 0 10px;
+  max-width: 600px;
 }
 
 
@@ -191,7 +194,7 @@ footer {
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
   justify-items: center;
-  margin-top: 60px;
+  margin: 60px 0;
 }
 
 .van {
@@ -286,6 +289,7 @@ i[class*='van__type'] {
 
 .van-detail-container {
   padding: 27px;
+  margin-bottom: 40px;
 }
 
 .van-detail-container .back-button {
@@ -308,7 +312,7 @@ i[class*='van__type'] {
 .van-detail img {
   border-radius: 5px;
   margin-block: 47px;
-  max-width: 600px;
+  max-width: 400px;
 }
 
 .van-detail h2 {
@@ -346,6 +350,8 @@ i[class*='van__type'] {
 
 /*  HostLayout page */
 /*  =============== */
+
+
 .host-nav {
   display: flex;
   margin: 10px;
@@ -356,4 +362,74 @@ i[class*='van__type'] {
   color: #4D4D4D;
   font-weight: 500;
   padding: 5px 20px;
+}
+
+.host-nav a:hover {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.host_vans_container {
+  padding: 0 20px;
+}
+
+.host_van {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.host_van a {
+  display: flex;
+  padding: 15px;
+}
+
+.host_van img{
+  max-height: 150px;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.host-van-detail-section{
+  padding: 0 30px;
+}
+
+.host-van-detail-layout-container {
+  background-color: white;
+  padding: 24px;
+  width: fit-content;
+}
+
+.host-van-detail {
+  display: flex;
+  align-items: center;
+}
+
+.host-van-detail>img {
+  height: 160px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.host-van-detail-info-text>h3 {
+  margin-top: 24px;
+  margin-bottom: 5px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.host-van-detail-info-text>h4 {
+  font-size: 20px;
+  margin-block: 0;
+}
+
+.back-button {
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 15px;
+  padding: 5px;
+  border-radius: 5px;
 }
