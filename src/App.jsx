@@ -36,7 +36,7 @@ import "./css/App.css"
 import HostVanInfo from "./pages/Host/HostVanInfo.jsx"
 
 function App() {
-	// TODO: change the subgect form vans to MTBs and persolize styles.
+	// TODO: change the subject form vans to MTBs and personalize styles.
 
 
 
@@ -48,11 +48,12 @@ function App() {
 					<Route path="vans" element={<Vans />} />
 					<Route path="vans/:id" element={<VanDetails />} />
 					<Route path="about" element={ <About /> } />
-					
+					// Routes for Host
 					<Route path="host" element={ <HostLayout /> }>
 						<Route index element={<Dashboard />} />
 						<Route path="income" element={<Income />} />
-						<Route path="vans" element={<HostVans />} />
+						<Route path="vans" element={ <HostVans /> } />
+						// Routes for HostVanDetails
 						<Route path="vans/:id" element={ <HostVanDetails /> }>
 							<Route index element={ <HostVanInfo /> } />
 							<Route path="pricing" element={ <HostVanPricing /> } />

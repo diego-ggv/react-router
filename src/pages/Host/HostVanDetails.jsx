@@ -1,11 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, Link, NavLink, Outlet } from "react-router-dom"
+/* 
+	This component is a parent component of the HostVanDetailsPricing, HostVanDetailsPhotos, and HostVanDetailsDetails components. It is responsible for fetching the van data from the database and passing it down to the child components. It also renders the navigation links for the child components.
+*/
+
+import React, { useEffect, useState } from "react"
+import {
+	useParams,
+	Link,
+	NavLink,
+	Outlet
+} from "react-router-dom"
 
 function HostVanDetails() {
-  const {id} = useParams()
-  const [van, setVan] = useState(null)
+	const { id } = useParams()
+	const [van, setVan] = useState(null)
 
-  useEffect(() => {
+	useEffect(() => {
 		fetch(`/api/host/vans/${id}`)
 			.then(res => res.json())
 			.then(data => setVan(data.vans))
@@ -18,7 +27,7 @@ function HostVanDetails() {
 		fontWeight: "600",
 	}
 
-  return (
+	return (
 		<section className="host-van-detail-section">
 			<Link to="../vans" className="back-button">
 				&larr; Back to all vans
@@ -30,13 +39,12 @@ function HostVanDetails() {
 						<div className="host-van-detail-info-text">
 							<i className={`van__type ${van.type}`}>{van.type}</i>
 							<h3>{van.name}</h3>
-							<h4>${van.price}/day</h4>
 						</div>
 					</div>
 					<nav className="host-vans-nav">
 						<NavLink
-							to="."
 							end
+							to="."
 							style={({ isActive }) => (isActive ? activeStyles : null)}
 						>
 							Details
@@ -53,14 +61,15 @@ function HostVanDetails() {
 						>
 							Photos
 						</NavLink>
-						<Outlet />
 					</nav>
+					
+						<Outlet context={{ van }} />
 				</div>
 			) : (
 				<h2>Loading...</h2>
 			)}
 		</section>
-	) 
+	)
 }
 
 export default HostVanDetails
