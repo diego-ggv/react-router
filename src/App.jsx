@@ -38,8 +38,6 @@ import HostVanInfo from "./pages/Host/HostVanInfo.jsx"
 function App() {
 	// TODO: change the subject form vans to MTBs and personalize styles.
 
-
-
 	return (
 		<BrowserRouter>
 			<Routes>

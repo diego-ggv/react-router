@@ -19,7 +19,6 @@ function VanDetails() {
 	// ==============================
 	const search = location.state?.search || ""
 	const vanType = location.state?.type || "all"
-	console.log(vanType)
 
 	//  RENDER
 	// ==============================
