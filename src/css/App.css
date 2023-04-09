@@ -456,3 +456,32 @@ i[class*='van__type'] {
     border-radius: 3px;
 }
 
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: auto;
+  padding: 10px;
+}
+
+.not-found-button {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+  background: var(--text-dark-color);
+  color: var(--text-light-color);
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.not-found-button:hover {
+  outline: 2px solid var(--text-dark-color);
+    background: #FFCC8D;
+      color: #252525;
+}

@@ -4,7 +4,7 @@
 
 // IMPORT REACT
 // ==============================
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 // IMPORT PAGES
 // ==============================
@@ -38,11 +38,19 @@ import HostVanInfo from "./pages/Host/HostVanInfo.jsx"
 function App() {
 	// TODO: change the subject form vans to MTBs and personalize styles.
 
+	const notFoundPage = () => {
+		return (
+		<div className="not-found">
+				<h1>Sorry, the page you were looking for was not found.</h1>
+				<Link to="/" className="not-found-button">Return to home</Link>
+	</div>
+) }
+
 	return (
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Layout />}>
-					// Main Nav
+					// Main Pages
 					<Route index element={<Home />} />
 					<Route path="vans" element={<Vans />} />
 					<Route path="vans/:id" element={<VanDetails />} />
@@ -54,14 +62,20 @@ function App() {
 						<Route path="income" element={<Income />} />
 						<Route path="vans" element={ <HostVans /> } />
 
-						// Routes for HostVanDetails
+						// Routes for Host Vans
 						<Route path="vans/:id" element={ <HostVanDetails /> }>
 							<Route index element={ <HostVanInfo /> } />
 							<Route path="pricing" element={ <HostVanPricing /> } />
 							<Route path="photos" element={ <HostVanPhotos /> } />
 						</Route>
 						<Route path="reviews" element={<Reviews />} />
-					</Route>j
+					</Route>
+
+					// 404 Not Found
+					<Route
+						path="*"
+						element={ notFoundPage() } 
+						/>
 				</Route>
 			</Routes>
 		</BrowserRouter>
