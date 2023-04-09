@@ -8,7 +8,7 @@ function HostVanPhotos() {
     <img
       src={ van.imageUrl }
       alt={ van.name }
-      className="host-van-photos"   
+      className="host-van-photos"
     />
   )
 }

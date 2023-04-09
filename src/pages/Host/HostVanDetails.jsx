@@ -29,9 +29,14 @@ function HostVanDetails() {
 
 	return (
 		<section className="host-van-detail-section">
-			<Link to="../vans" className="back-button">
+			
+			<Link
+				relative="path"
+				to=".."
+				className="back-button">
 				&larr; Back to all vans
 			</Link>
+
 			{van ? (
 				<div className="host-van-detail-layout-container">
 					<div className="host-van-detail">
