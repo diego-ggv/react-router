@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
-// import data from "../../data/data.json"
+import { Link, useSearchParams } from "react-router-dom"
 
 function Vans() {
 	// REACT HOOKS
 	// ==============================
+	const [searchParas, setSearchParams] = useSearchParams()
 	const [vans, setVans] = useState([])
 
 	useEffect(() => {
@@ -16,10 +16,17 @@ function Vans() {
 			})
 	}, [])
 
+	// FILTER
+	// ==============================
+	const typeFilter = searchParas.get("type")
+
+	const filterVans = typeFilter
+		? vans.filter(van => van.type === typeFilter)
+		: vans
+
 	// FUNCTIONS
 	// ==============================
-	// vanList displays all the vans from the API
-	const vanList = vans.map(van => (
+	const vanList = filterVans.map(van => (
 		<div key={van.id} className="van">
 			<Link to={`/vans/${van.id}`}>
 				<img src={van.imageUrl} alt={van.name} />
@@ -34,29 +41,37 @@ function Vans() {
 		</div>
 	))
 
-	/*
-	const vansData = data.vans
-	const vanList = vansData.map(van => (
-		<div key={van.id} className="van">
-			<Link to={`/vans/${van.id}`}>
-				<img src={van.imageUrl} alt={van.name} />
-				<div className="van__info">
-					<h2>{van.name}</h2>
-					<p>
-						${van.price} <span>/day</span>
-					</p>
-				</div>
-				<i className={`van__type ${van.type} selected`}>{van.type}</i>
-			</Link>
-		</div>
-	))
-	*/
-
-// RENDER
-// ==============================
-return (
+	// RENDER
+	// ==============================
+	return (
 		<main className="van__container">
 			<h1>Explore our van options</h1>
+			<div className="van-list-filter-buttons">
+				<button
+					className="van__type simple"
+					onClick={() => setSearchParams({ type: "simple" })}
+				>
+					Simple
+				</button>
+				<button
+					className="van__type rugged"
+					onClick={() => setSearchParams({ type: "rugged" })}
+				>
+					Rugged
+				</button>
+				<button
+					className="van__type luxury"
+					onClick={() => setSearchParams({ type: "luxury" })}
+				>
+					Luxury
+				</button>
+				<button
+					className="van__type clear__filters"
+					onClick={() => setSearchParams({})}
+				>
+					Clear
+				</button>
+			</div>
 			<div className="van__list">{vanList}</div>
 		</main>
 	)

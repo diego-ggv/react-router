@@ -44,15 +44,18 @@ function App() {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Layout />}>
+					// Main Nav
 					<Route index element={<Home />} />
 					<Route path="vans" element={<Vans />} />
 					<Route path="vans/:id" element={<VanDetails />} />
 					<Route path="about" element={ <About /> } />
+
 					// Routes for Host
 					<Route path="host" element={ <HostLayout /> }>
 						<Route index element={<Dashboard />} />
 						<Route path="income" element={<Income />} />
 						<Route path="vans" element={ <HostVans /> } />
+
 						// Routes for HostVanDetails
 						<Route path="vans/:id" element={ <HostVanDetails /> }>
 							<Route index element={ <HostVanInfo /> } />

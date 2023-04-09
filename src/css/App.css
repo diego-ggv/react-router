@@ -189,6 +189,10 @@ footer {
  padding-inline: 25px;
 }
 
+.van__container a{
+  margin-right: 10px;
+}
+
 .van__list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -451,3 +455,4 @@ i[class*='van__type'] {
     margin: 15px;
     border-radius: 3px;
 }
+
