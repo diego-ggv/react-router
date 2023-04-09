@@ -41,7 +41,9 @@ function App() {
 	const notFoundPage = () => {
 		return (
 		<div className="not-found">
-				<h1>Sorry, the page you were looking for was not found.</h1>
+				<h1>404 page not found! <br/>
+					<span className="text-lighter">Sorry, the page you were looking for was not found.</span>
+				</h1>
 				<Link to="/" className="not-found-button">Return to home</Link>
 	</div>
 ) }
