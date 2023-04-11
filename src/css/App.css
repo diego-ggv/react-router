@@ -198,7 +198,7 @@ footer {
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
   justify-items: center;
-  margin: 60px 0;
+  margin: 40px 0 60px;
 }
 
 .van {
@@ -230,6 +230,7 @@ footer {
 
 .van__container button {
   margin-right: 20px;
+  margin-bottom: 15px;
   cursor: pointer;
 }
 
@@ -482,4 +483,8 @@ i[class*='van__type'] {
   outline: 2px solid var(--text-dark-color);
     background: #FFCC8D;
       color: #252525;
+}
+
+.loading{
+  margin:  40px;
 }
