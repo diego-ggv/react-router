@@ -1,19 +1,29 @@
 import { useState, useEffect } from "react"
-import { Link, useSearchParams } from "react-router-dom"
+import { Link, useSearchParams, useSubmit } from "react-router-dom"
+import { getVans } from "../../api/apiVans.js"
 
 function Vans() {
 	// REACT HOOKS
 	// ==============================
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [vans, setVans] = useState([])
+	const [ loading, setLoading ] = useState(false)
+	const [error, setError] = useState(null)
 
 	useEffect(() => {
-		fetch("/api/vans") // fetch returns a promise
-			.then(res => res.json()) // res.json() returns a promise
-			.then(data => setVans(data.vans)) // data.vans is an array of objects
-			.catch(err => {
-				console.log(err) // if there is an error, it will be logged in the console
-			})
+		async function loadVans() {
+			setLoading(true)
+			try {
+				const data = await getVans()
+				setVans(data)
+			} catch (err) {
+				console.log(err)
+				setError(err)
+			} finally {
+				setLoading(false)
+			}
+		}
+		loadVans()
 	}, [])
 
 	// FILTER
@@ -52,6 +62,14 @@ function Vans() {
 
 	// RENDER
 	// ==============================
+	if (loading) {
+		return <h1 className="loading">Loading...</h1>
+	}
+
+	if (error) {
+		return <h1 className="loading">There was an error: {error.message}</h1>
+	}
+
 	return (
 		<main className="van__container">
 			<h1>Explore our van options</h1>
