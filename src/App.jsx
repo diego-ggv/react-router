@@ -18,7 +18,7 @@ import {
 // ==============================
 import Home from "./pages/Home.jsx"
 import About from "./pages/About.jsx"
-import Vans from "./pages/Vans/Vans.jsx"
+import Vans, { loader as vansLoader } from "./pages/Vans/Vans.jsx"
 import VanDetails from "./pages/Vans/VanDetails.jsx"
 import Dashboard from "./pages/Host/Dashboard.jsx"
 import Income from "./pages/Host/Income.jsx"
@@ -71,7 +71,7 @@ function App() {
 			<Route path="/" element={<Layout />}>
 				// Main Pages
 				<Route index element={<Home />} />
-				<Route path="vans" element={<Vans />} />
+				<Route path="vans" element={<Vans />} loader={vansLoader} />
 				<Route path="vans/:id" element={<VanDetails />} />
 				<Route path="about" element={<About />} />
 				// Routes for Host

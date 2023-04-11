@@ -1,40 +1,30 @@
-import { useState, useEffect } from "react"
-import { Link, useSearchParams, useSubmit } from "react-router-dom"
+import { useState } from "react"
+import {
+	Link,
+	useSearchParams,
+	useLoaderData
+} from "react-router-dom"
 import { getVans } from "../../api/apiVans.js"
 
+// LOADER
+// ==============================
+export const loader = () => getVans()
+
+// COMPONENT
+// ==============================
 function Vans() {
 	// REACT HOOKS
 	// ==============================
-	const [searchParams, setSearchParams] = useSearchParams()
-	const [vans, setVans] = useState([])
-	const [ loading, setLoading ] = useState(false)
+	const [ searchParams, setSearchParams ] = useSearchParams()
 	const [error, setError] = useState(null)
-
-	useEffect(() => {
-		async function loadVans() {
-			setLoading(true)
-			try {
-				const data = await getVans()
-				setVans(data)
-			} catch (err) {
-				console.log(err)
-				setError(err)
-			} finally {
-				setLoading(false)
-			}
-		}
-		loadVans()
-	}, [])
-
+	const vans = useLoaderData()
+	
 	// FILTER
 	// ==============================
 	const typeFilter = searchParams.get("type")
 
 	const filterVans = typeFilter
-		? vans.filter(van =>
-			
-			
-			van.type === typeFilter)
+		? vans.filter(van => van.type === typeFilter)
 		: vans
 
 	// FUNCTIONS
@@ -62,10 +52,6 @@ function Vans() {
 
 	// RENDER
 	// ==============================
-	if (loading) {
-		return <h1 className="loading">Loading...</h1>
-	}
-
 	if (error) {
 		return <h1 className="loading">There was an error: {error.message}</h1>
 	}
