@@ -16,7 +16,6 @@ function Vans() {
 	// REACT HOOKS
 	// ==============================
 	const [ searchParams, setSearchParams ] = useSearchParams()
-	const [error, setError] = useState(null)
 	const vans = useLoaderData()
 	
 	// FILTER
@@ -52,18 +51,12 @@ function Vans() {
 
 	// RENDER
 	// ==============================
-	if (error) {
-		return <h1 className="loading">There was an error: {error.message}</h1>
-	}
-
 	return (
 		<main className="van__container">
 			<h1>Explore our van options</h1>
 			<div className="van-list-filter-buttons">
 				<button
-					className={`van__type simple ${
-						typeFilter === "simple" ? "selected" : ""
-					}`}
+					className={`van__type simple ${typeFilter === "simple" ? "selected" : ""}`}
 					onClick={() => {
 						setSearchParams({ type: "simple" })
 						console.log("Searching for simple vans")
@@ -72,9 +65,7 @@ function Vans() {
 					Simple
 				</button>
 				<button
-					className={`van__type rugged ${
-						typeFilter === "rugged" ? "selected" : ""
-					}`}
+					className={`van__type rugged ${typeFilter === "rugged" ? "selected" : ""}`}
 					onClick={() => {
 						setSearchParams({ type: "rugged" })
 						console.log("Searching for rugged vans")
@@ -83,9 +74,7 @@ function Vans() {
 					Rugged
 				</button>
 				<button
-					className={`van__type luxury ${
-						typeFilter === "luxury" ? "selected" : ""
-					}`}
+					className={`van__type luxury ${typeFilter === "luxury" ? "selected" : ""}`}
 					onClick={() => {
 						setSearchParams({ type: "luxury" })
 						console.log("Searching for luxury vans")

@@ -10,8 +10,7 @@ import {
 	RouterProvider,
 	createBrowserRouter,
 	createRoutesFromElements,
-	Route,
-	Link
+	Route
 } from "react-router-dom"
 
 // IMPORT PAGES
@@ -21,7 +20,7 @@ import About from "./pages/About.jsx"
 import Vans, { loader as vansLoader } from "./pages/Vans/Vans.jsx"
 import VanDetails from "./pages/Vans/VanDetails.jsx"
 import Dashboard from "./pages/Host/Dashboard.jsx"
-import Income from "./pages/Host/Income.jsx"
+import Income from "./pages/Host/HostVanIncome.jsx"
 import HostVans from "./pages/Host/HostVans.jsx"
 import HostVanDetails from "./pages/Host/HostVanDetails.jsx"
 import HostVanInfo from "./pages/Host/HostVanInfo.jsx"
@@ -34,6 +33,10 @@ import Reviews from "./pages/Host/Reviews.jsx"
 import Layout from "./components/Layout.jsx"
 import HostLayout from "./components/HostLayout.jsx"
 
+// IMPORT ERROR
+import Error from "./components/Error.jsx"
+import NotFoundPage from "./pages/NotFoundPage.jsx"
+
 // IMPORT SERVER
 // ==============================
 import "./data/server.js" // Dummy server using miragejs
@@ -44,25 +47,7 @@ import "./css/App.css"
 
 function App() {
 	// TODO: change the subject form vans to MTBs and personalize styles.
-
-
-// 404 PAGE
-// ==============================
-	const notFoundPage = () => {
-		return (
-			<div className="not-found">
-				<h1>
-					404 page not found! <br />
-					<span className="text-lighter">
-						Sorry, the page you were looking for was not found.
-					</span>
-				</h1>
-				<Link to="/" className="not-found-button">
-					Return to home
-				</Link>
-			</div>
-		)
-	}
+	// BUG: When receiving an error the the app won't display the correct error message
 
 	// ROUTER 
 	// ==============================
@@ -71,7 +56,12 @@ function App() {
 			<Route path="/" element={<Layout />}>
 				// Main Pages
 				<Route index element={<Home />} />
-				<Route path="vans" element={<Vans />} loader={vansLoader} />
+				<Route
+					path="vans"
+					loader={vansLoader}
+					element={<Vans />}
+					errorElement={<Error />}
+				/>
 				<Route path="vans/:id" element={<VanDetails />} />
 				<Route path="about" element={<About />} />
 				// Routes for Host
@@ -88,7 +78,7 @@ function App() {
 					<Route path="reviews" element={<Reviews />} />
 				</Route>
 				// 404 Not Found
-				<Route path="*" element={notFoundPage()} />
+				<Route path="*" element={<NotFoundPage />} />
 			</Route>
 		)
 	)

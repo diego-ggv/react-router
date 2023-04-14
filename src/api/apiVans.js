@@ -8,6 +8,7 @@ export const getVans = async () => {
 		}
 	}
 	const data = await res.json()
-
-	return data.vans
+	const vans = data.vans
+	
+	return vans 
 }
