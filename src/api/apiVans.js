@@ -1,4 +1,4 @@
-export const getVans = async () => {
+export async function getVans() {
 	const res = await fetch("/api/vans")
 	if (!res.ok) {
 		throw {
@@ -8,7 +8,6 @@ export const getVans = async () => {
 		}
 	}
 	const data = await res.json()
-	const vans = data.vans
-	
-	return vans 
+
+	return data.vans
 }

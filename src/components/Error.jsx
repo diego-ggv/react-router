@@ -3,14 +3,16 @@ import { useRouteError } from "react-router-dom"
 
 function Error() {
   const error = useRouteError()
-  console.log(error)
+  console.log(error.message)
   
   return (
-    <>
-    <h1 className="not-found">Error: {error.message}</h1>
-    <pre>{error.status} - {error.statusText}</pre>
-    </>
-  )
+		<div className="error">
+			<h1 className="not-found">Error: {error.message}</h1>
+			<pre className="text-lighter">
+				{error.status} - {error.statusText}
+			</pre>
+		</div>
+	)
 }
 
 export default Error
