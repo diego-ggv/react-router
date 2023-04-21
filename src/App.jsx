@@ -27,6 +27,7 @@ import HostVanInfo from "./pages/Host/HostVanInfo.jsx"
 import HostVanPricing from "./pages/Host/HostVanPricing.jsx"
 import HostVanPhotos from "./pages/Host/HostVanPhotos.jsx"
 import Reviews from "./pages/Host/Reviews.jsx"
+import Login from "./pages/Login.jsx"
 
 // IMPORT COMPONENTS
 // ==============================
@@ -54,22 +55,20 @@ function App() {
 	const router = createBrowserRouter(
 		createRoutesFromElements(
 			<Route path="/" element={<Layout />}>
-				// Main Pages
 				<Route index element={<Home />} />
 				<Route
 					path="vans"
-					loader={vansLoader}
 					element={<Vans />}
 					errorElement={<Error />}
+					loader={ vansLoader }
 				/>
 				<Route path="vans/:id" element={<VanDetails />} />
 				<Route path="about" element={<About />} />
-				// Routes for Host
+				<Route path="login" element={<Login />} />
 				<Route path="host" element={<HostLayout />}>
 					<Route index element={<Dashboard />} />
 					<Route path="income" element={<Income />} />
 					<Route path="vans" element={<HostVans />} />
-					// Routes for Host Vans
 					<Route path="vans/:id" element={<HostVanDetails />}>
 						<Route index element={<HostVanInfo />} />
 						<Route path="pricing" element={<HostVanPricing />} />
@@ -77,7 +76,6 @@ function App() {
 					</Route>
 					<Route path="reviews" element={<Reviews />} />
 				</Route>
-				// 404 Not Found
 				<Route path="*" element={<NotFoundPage />} />
 			</Route>
 		)

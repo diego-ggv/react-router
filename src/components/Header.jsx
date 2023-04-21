@@ -6,7 +6,7 @@ import { NavLink, Link } from 'react-router-dom'
 function Header() {
   return (
 		<header>
-			<Link to="/" className="link__home" >
+			<Link to="/" className="link__home">
 				#VANLIFE
 			</Link>
 			<nav className="navbar">
@@ -28,6 +28,9 @@ function Header() {
 				>
 					About
 				</NavLink>
+				<Link to="login" className="login-link">
+					<i className="login-icon fa-regular fa-circle-user"></i>
+				</Link>
 			</nav>
 		</header>
 	)
