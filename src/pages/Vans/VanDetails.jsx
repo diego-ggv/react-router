@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, Link, useLocation } from 'react-router-dom'
+import { 
+	Link, 
+	useLocation, 
+	useLoaderData, 
+} from 'react-router-dom'
+import {getVans} from '../../api/apiVans.js'
+
+export function loader({ params}) {
+	console.log(params)
+	return getVans(params.id)
+}
 
 function VanDetails() {
 	// REACT HOOKS
 	// ==============================
-	const params = useParams()
 	const location = useLocation()
-	const [van, setVan] = useState(null)
-
-	useEffect(() => {
-		fetch(`/api/vans/${params.id}`)
-			.then(res => res.json())
-			.then(data => setVan(data.vans))
-			.catch(err => console.log(err))
-	}, [params.id])
+	const van = useLoaderData()
 
 	// SEARCH PARAMS
 	// ==============================
@@ -30,10 +31,9 @@ function VanDetails() {
 				className="back-button">
 				&larr; Back to {vanType} vans
 			</Link>
-
-			{van ? (
+		
 				<div className="van-detail">
-					<img src={van.imageUrl} />
+					<img src={van.imageUrl} alt={`${van.name}`}/>
 					<i className={`van-type ${van.type} selected`}>{van.type}</i>
 					<h2>{van.name}</h2>
 					<p className="van-price">
@@ -42,9 +42,7 @@ function VanDetails() {
 					<p>{van.description}</p>
 					<button className="link-button">Rent this van</button>
 				</div>
-			) : (
-				<h2>Loading...</h2>
-			)}
+	
 		</main>
 	)
 }

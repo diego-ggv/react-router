@@ -1,8 +1,6 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
-
-
 function Header() {
   return (
 		<header>
@@ -28,7 +26,7 @@ function Header() {
 				>
 					About
 				</NavLink>
-				<Link to="login" className="login-link">
+				<Link to="login">
 					<i className="login-icon fa-regular fa-circle-user"></i>
 				</Link>
 			</nav>

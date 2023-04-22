@@ -1,20 +1,16 @@
-import React, {useEffect, useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
+import { getHostVans } from '../../api/apiVans.js'
+
+// LOADER
+// ==============================
+export const loader = () => getHostVans()
 
 function HostVans() {
 	// REACT HOOKS
 	// ==============================
-	const [vans, setVans] = useState([])
+	const vans = useLoaderData()
 
-	useEffect(() => {
-		fetch("/api/host/vans")
-			.then(res => res.json())
-			.then(data => setVans(data.vans))
-			.catch(err => console.log(err))
-	}, [])
-
-
-	//	RENDER
+	// COMPONENTS
 	// ==============================
 	const hostVans = vans.map(van => {
 		return (
@@ -29,7 +25,9 @@ function HostVans() {
 			</div>
 		)
 	})
-
+	
+	//	RENDER
+	// ==============================
 	return (
 		<div className="host_vans_container">
 			<h2>Your listed vans</h2>

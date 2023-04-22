@@ -13,7 +13,7 @@ export default function Login() {
     console.log(loginFormData)
   }
 
-  function handleCHange(e) {
+  function handleChange(e) {
     const { name, value } = e.target
     setLoginFormData(prev => ({
       ...prev,
@@ -29,14 +29,14 @@ export default function Login() {
 			<form onSubmit={handleSubmit} className="login-form">
 				<input
 					name="email"
-					onChange={handleCHange}
+					onChange={handleChange}
 					type="email"
 					placeholder="Email Address"
 					value={loginFormData.email}
 				/>
 				<input
 					name="password"
-					onChange={handleCHange}
+					onChange={handleChange}
 					type="password"
 					placeholder="Password"
 					value={loginFormData.password}

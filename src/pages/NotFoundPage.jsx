@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 // ==============================
 function notFoundPage() {
 	return (
-		<div className="not-found">
+		<div className="error">
 			<h1>
 				404 page not found! <br />
 				<span className="text-lighter">
