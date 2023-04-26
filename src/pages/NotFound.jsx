@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 // 404 PAGE
 // ==============================
-function notFoundPage() {
+function notFound() {
 	return (
 		<div className="error">
 			<h1>
@@ -18,4 +18,4 @@ function notFoundPage() {
 	)
 }
 
-export default notFoundPage
+export default notFound

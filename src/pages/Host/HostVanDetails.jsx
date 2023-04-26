@@ -13,10 +13,14 @@ import {
 	useLoaderData,
 } from "react-router-dom"
 import { getHostVans } from '../../api/apiVans.js'
+import { requireAuth } from "../../utils/requireAuth.js"
 
 // LOADER
 // ==============================
-export const loader = ({ params }) => getHostVans(params.id)
+export const loader = async ({ params }) => {
+	await requireAuth()
+	return getHostVans(params.id) 
+}
 
 function HostVanDetails() {
 	// REACT HOOKS

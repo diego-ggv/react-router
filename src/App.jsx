@@ -1,7 +1,6 @@
 /* 
-  Description: This is the main component of the app. 
-	It is the parent of all other components. 
-	This component is responsible for routing the user to the correct page.
+  Description: This is the main component of the app, 
+  and is responsible for routing the user to the correct page.
 */
 
 // IMPORT REACT-ROUTER-DOM
@@ -18,7 +17,7 @@ import {
 import Home from "./pages/Home.jsx"
 import About from "./pages/About.jsx"
 import Vans, { loader as vansLoader } from "./pages/Vans/Vans.jsx"
-import VanDetails, { loader as vanDetailLoader }from "./pages/Vans/VanDetails.jsx"
+import VanDetail, { loader as vanDetailLoader }from "./pages/Vans/VanDetails.jsx"
 import Dashboard from "./pages/Host/Dashboard.jsx"
 import Income from "./pages/Host/HostVanIncome.jsx"
 import HostVans, { loader as hostVansLoader } from "./pages/Host/HostVans.jsx"
@@ -36,11 +35,15 @@ import HostLayout from "./components/HostLayout.jsx"
 
 // IMPORT ERROR
 import Error from "./components/Error.jsx"
-import NotFoundPage from "./pages/NotFoundPage.jsx"
+import NotFoundPage from "./pages/NotFound.jsx"
 
 // IMPORT SERVER
 // ==============================
 import "./data/server.js" // Placeholder server using MirageJs
+
+// IMPORT UTILS 
+// ==============================
+import { requireAuth } from "./utils/requireAuth.js"
 
 // IMPORT STYLES
 // ==============================
@@ -53,10 +56,7 @@ function App() {
 	// ==============================
 	const router = createBrowserRouter(
 		createRoutesFromElements(
-			<Route 
-				path="/" 
-				element={<Layout />}
-			>
+			<Route path="/"	element={<Layout />}>
 				<Route 
 					index 
 					element={ <Home /> } 
@@ -69,7 +69,7 @@ function App() {
 				/>
 				<Route 
 					path="vans/:id" 
-					element={ <VanDetails /> } 
+					element={ <VanDetail /> } 
 					loader={ vanDetailLoader }
 				/>
 				<Route 
@@ -80,33 +80,21 @@ function App() {
 					path="login" 
 					element={ <Login /> } 
 				/>
-				<Route
-					path="host"
-					element={ <HostLayout /> }
-					loader={ async () => {
-						
-						return null
-					} }
-				>
+				<Route path="host" element={ <HostLayout /> } >
 					<Route 
 						index 
-						element={ <Dashboard /> } 
+						element={ <Dashboard /> }
+						loader={ async () => await requireAuth() }
 					/>
 					<Route
 						path="income"
 						element={ <Income /> }
-						loader={ async () => {
-							
-							return null
-						} }
+						loader={ async () => await requireAuth() }
 					/>
 					<Route
 						path="reviews"
 						element={ <Reviews /> }
-						loader={ async () => {
-							
-							return null
-						} }
+						loader={ async () => await requireAuth() }
 					/>
 					<Route
 						path="vans"
@@ -121,26 +109,17 @@ function App() {
 						<Route
 							index
 							element={ <HostVanInfo /> }
-							loader={ async () => {
-								
-								return null
-							} }
+							loader={ async () => await requireAuth() }
 						/>
 						<Route
 							path="pricing"
 							element={ <HostVanPricing /> }
-							loader={ async () => {
-								
-								return null
-							} }
+							loader={ async () => await requireAuth() }
 						/>
 						<Route
 							path="photos"
 							element={ <HostVanPhotos /> }
-							loader={ async () => {
-								
-								return null
-							} }
+							loader={ async () => await requireAuth() }
 						/>
 					</Route>
 				</Route>

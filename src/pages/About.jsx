@@ -8,7 +8,7 @@ function About() {
              src={vanTent}
              alt="van with a rooftop tent" />
         <div className="about__container">
-          <h1>Don't squeeze in a sedan when you could relax in an Element.</h1>
+          <h1>Don't squeeze in a sedan when you could relax in an van.</h1>
           <p>Our mission is to enliven your road trip with the perfect travel
              van rental. Our vans are re-certified before each trip to ensure
              your travel plans can go off without a hitch. (Hitch costs extra
